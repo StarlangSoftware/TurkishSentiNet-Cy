@@ -8,9 +8,9 @@ setup(
     version='1.0.2',
     packages=['SentiNet'],
     package_data={'SentiNet': ['*.pxd', '*.pyx', '*.c']},
-    url='https://github.com/olcaytaner/TurkishSentiNet-Cy',
+    url='https://github.com/StarlangSoftware/TurkishSentiNet-Cy',
     license='',
     author='olcaytaner',
-    author_email='olcaytaner@isikun.edu.tr',
+    author_email='olcay.yildiz@ozyegin.edu.tr',
     description='Turkish SentiNet'
 )
