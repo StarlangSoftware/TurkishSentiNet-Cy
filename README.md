@@ -29,7 +29,7 @@ Use Git for cloning the code to your local or below line for Ubuntu:
 
 A directory called SentiNet will be created. Or you can use below link for exploring the code:
 
-	git clone https://github.com/starlangsoftware/TurkishSentiNet-Py.git
+	git clone https://github.com/starlangsoftware/TurkishSentiNet-Cy.git
 
 ## Open project with Pycharm IDE
 
@@ -37,6 +37,41 @@ Steps for opening the cloned project:
 
 * Start IDE
 * Select **File | Open** from main menu
-* Choose `TurkishSentiNet-PY` file
+* Choose `TurkishSentiNet-CY` file
 * Select open as project option
 * Couple of seconds, dependencies will be downloaded. 
+
+Detailed Description
+============
+
++ [SentiNet](#sentinet)
++ [SentiSynSet](#sentisynset)
+
+## SentiNet
+
+Duygu sözlüğünü yüklemek için
+
+	a = SentiNet()
+
+Belirli bir alana ait duygu sözlüğünü yüklemek için
+
+	SentiNet(fileName: str)
+	a = SentiNet("dosya.txt")
+
+Belirli bir synsete ait duygu synsetini elde etmek için
+
+	getSentiSynSet(self, _id: str) -> SentiSynSet
+
+## SentiSynSet
+
+Bir SentiSynset elimizdeyken onun pozitif skorunu
+
+	getPositiveScore(self) -> float
+
+negatif skorunu
+
+	getNegativeScore(self) -> float
+
+polaritysini
+
+	getPolarity(self) -> PolarityType
