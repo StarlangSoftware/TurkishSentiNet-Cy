@@ -1,4 +1,4 @@
-from SentiNet.PolarityType cimport PolarityType
+from SentiNet.PolarityType import PolarityType
 
 
 cdef class SentiSynSet(object):

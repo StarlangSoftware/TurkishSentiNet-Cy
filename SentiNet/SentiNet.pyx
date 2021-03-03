@@ -1,5 +1,5 @@
 from SentiNet.SentiSynSet cimport SentiSynSet
-from SentiNet.PolarityType cimport PolarityType
+from SentiNet.PolarityType import PolarityType
 import xml.etree.ElementTree
 
 
@@ -71,7 +71,7 @@ cdef class SentiNet(object):
         """
         del self.__sentiSynSetList[sentiSynSet.getId()]
 
-    cpdef list getPolarity(self, PolarityType polarityType):
+    cpdef list getPolarity(self, object polarityType):
         """
         Constructs and returns a list of ids, which are the ids of the SentiSynSets having polarity
         polarityType.
