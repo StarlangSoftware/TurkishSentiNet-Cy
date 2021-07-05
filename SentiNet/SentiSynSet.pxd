@@ -6,4 +6,4 @@ cdef class SentiSynSet(object):
     cpdef float getPositiveScore(self)
     cpdef float getNegativeScore(self)
     cpdef str getId(self)
-    cpdef int getPolarity(self)
+    cpdef object getPolarity(self)

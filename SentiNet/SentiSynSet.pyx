@@ -53,7 +53,7 @@ cdef class SentiSynSet(object):
         """
         return self.__id
 
-    cpdef int getPolarity(self):
+    cpdef object getPolarity(self):
         """
         Returns the polarityType of the sentiSynSet. If the positive score is larger than the negative score, the
         polarity is positive; if the negative score is larger than the positive score, the polarity is negative; if
