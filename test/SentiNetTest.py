@@ -6,7 +6,7 @@ from SentiNet.SentiNet import SentiNet
 class SentiNetTest(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.sentiNet = SentiNet("../turkish_sentinet.xml")
+        self.sentiNet = SentiNet()
 
     def test_getPositives(self):
         self.assertEquals(3100, len(self.sentiNet.getPositives()))

@@ -1,3 +1,4 @@
+import pkg_resources
 from SentiNet.SentiLiteral cimport SentiLiteral
 from SentiNet.PolarityType import PolarityType
 import xml.etree.ElementTree
@@ -16,7 +17,7 @@ cdef class SentiLiteralNet(object):
         cdef str _name
         self.__sentiLiteralList = {}
         if fileName is None:
-            fileName = "turkish_sentiliteralnet.xml"
+            fileName = pkg_resources.resource_filename(__name__, 'data/turkish_sentiliteralnet.xml')
         root = xml.etree.ElementTree.parse(fileName).getroot()
         for sentiLiteral in root:
             _name = ""

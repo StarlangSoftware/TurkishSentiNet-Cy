@@ -5,7 +5,7 @@ from SentiNet.SentiLiteralNet import SentiLiteralNet
 class SentiLiteralNetTest(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.sentiNet = SentiLiteralNet("../turkish_sentiliteralnet.xml")
+        self.sentiNet = SentiLiteralNet()
 
     def test_getPositives(self):
         self.assertEquals(4335, len(self.sentiNet.getPositives()))
