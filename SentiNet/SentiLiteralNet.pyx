@@ -1,12 +1,9 @@
 import pkg_resources
-from SentiNet.SentiLiteral cimport SentiLiteral
 from SentiNet.PolarityType import PolarityType
 import xml.etree.ElementTree
 
 
 cdef class SentiLiteralNet(object):
-
-    cdef dict __sentiLiteralList
 
     def __init__(self, fileName=None):
         """

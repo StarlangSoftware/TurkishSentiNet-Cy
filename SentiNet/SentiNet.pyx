@@ -1,12 +1,9 @@
 import pkg_resources
-from SentiNet.SentiSynSet cimport SentiSynSet
 from SentiNet.PolarityType import PolarityType
 import xml.etree.ElementTree
 
 
 cdef class SentiNet(object):
-
-    cdef dict __sentiSynSetList
 
     def __init__(self, fileName=None):
         """

@@ -8,13 +8,13 @@ class SentiLiteralNetTest(unittest.TestCase):
         self.sentiNet = SentiLiteralNet()
 
     def test_getPositives(self):
-        self.assertEquals(4335, len(self.sentiNet.getPositives()))
+        self.assertEqual(4335, len(self.sentiNet.getPositives()))
 
     def test_getNegatives(self):
-        self.assertEquals(13011, len(self.sentiNet.getNegatives()))
+        self.assertEqual(13011, len(self.sentiNet.getNegatives()))
 
     def test_getNeutrals(self):
-        self.assertEquals(62379, len(self.sentiNet.getNeutrals()))
+        self.assertEqual(62379, len(self.sentiNet.getNeutrals()))
 
 
 if __name__ == '__main__':
