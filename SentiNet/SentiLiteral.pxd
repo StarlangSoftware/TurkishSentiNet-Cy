@@ -1,7 +1,7 @@
 cdef class SentiLiteral(object):
 
     cdef str __name
-    cdef float __positiveScore, __negativeScore
+    cdef float __positive_score, __negative_score
 
     cpdef float getPositiveScore(self)
     cpdef float getNegativeScore(self)

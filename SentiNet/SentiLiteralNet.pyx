@@ -5,31 +5,33 @@ import xml.etree.ElementTree
 
 cdef class SentiLiteralNet(object):
 
-    def __init__(self, fileName=None):
+    def __init__(self, file_name=None):
         """
         Constructor of Turkish SentiNet. Reads the turkish_sentinet.xml file from the resources directory. For each
         sentiSynSet read, it adds it to the sentiSynSetList.
         """
-        cdef float positiveScore, negativeScore
+        cdef float positive_score, negative_score
         cdef str _name
-        self.__sentiLiteralList = {}
-        if fileName is None:
-            fileName = pkg_resources.resource_filename(__name__, 'data/turkish_sentiliteralnet.xml')
-        root = xml.etree.ElementTree.parse(fileName).getroot()
-        for sentiLiteral in root:
+        self.__senti_literal_list = {}
+        if file_name is None:
+            file_name = pkg_resources.resource_filename(__name__, 'data/turkish_sentiliteralnet.xml')
+        root = xml.etree.ElementTree.parse(file_name).getroot()
+        for senti_literal in root:
             _name = ""
-            positiveScore = 0.0
-            negativeScore = 0.0
-            for part in sentiLiteral:
+            positive_score = 0.0
+            negative_score = 0.0
+            for part in senti_literal:
                 if part.tag == "NAME":
                     _name = part.text
                 else:
                     if part.tag == "PSCORE":
-                        positiveScore = float(part.text)
+                        positive_score = float(part.text)
                     else:
-                        negativeScore = float(part.text)
+                        negative_score = float(part.text)
             if _name != "":
-                self.__sentiLiteralList[_name] = SentiLiteral(_name, positiveScore, negativeScore)
+                self.__senti_literal_list[_name] = SentiLiteral(_name,
+                                                                positive_score,
+                                                                negative_score)
 
     cpdef SentiLiteral getSentiLiteral(self, str _name):
         """
@@ -45,7 +47,7 @@ cdef class SentiLiteralNet(object):
         SentiLiteral
             SentiLiteral with the given name.
         """
-        return self.__sentiLiteralList[_name]
+        return self.__senti_literal_list[_name]
 
     cpdef list getPolarity(self, object polarityType):
         """
@@ -63,11 +65,11 @@ cdef class SentiLiteralNet(object):
             A list of id having polarityType polarityType.
         """
         cdef list result
-        cdef SentiLiteral sentiLiteral
+        cdef SentiLiteral senti_literal
         result = []
-        for sentiLiteral in self.__sentiLiteralList.values():
-            if sentiLiteral.getPolarity() == polarityType:
-                result.append(sentiLiteral.getName())
+        for senti_literal in self.__senti_literal_list.values():
+            if senti_literal.getPolarity() == polarityType:
+                result.append(senti_literal.getName())
         return result
 
     cpdef list getPositives(self):
@@ -103,3 +105,5 @@ cdef class SentiLiteralNet(object):
         """
         return self.getPolarity(PolarityType.NEUTRAL)
 
+    def __repr__(self):
+        return f"{self.__senti_literal_list}"

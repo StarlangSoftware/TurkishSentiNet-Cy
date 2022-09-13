@@ -2,7 +2,7 @@ from SentiNet.SentiLiteral cimport SentiLiteral
 
 cdef class SentiLiteralNet(object):
 
-    cdef dict __sentiLiteralList
+    cdef dict __senti_literal_list
 
     cpdef SentiLiteral getSentiLiteral(self, str _name)
     cpdef list getPolarity(self, object polarityType)

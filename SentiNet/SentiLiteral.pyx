@@ -3,7 +3,9 @@ from SentiNet.PolarityType import PolarityType
 
 cdef class SentiLiteral(object):
 
-    def __init__(self, _name: str, positiveScore: float, negativeScore: float):
+    def __init__(self, _name: str,
+                 positive_score: float,
+                 negative_score: float):
         """
         Constructor of SentiSynSet. Gets input id, positiveScore, negativeScore and sets all corresponding attributes.
 
@@ -11,14 +13,14 @@ cdef class SentiLiteral(object):
         ----------
         _name : str
             Id of the SentiLiteral.
-        positiveScore : float
+        positive_score : float
             Positive score of the SentiLiteral.
-        negativeScore : float
+        negative_score : float
             Negative score of the SentiLiteral.
         """
         self.__name = _name
-        self.__positiveScore = positiveScore
-        self.__negativeScore = negativeScore
+        self.__positive_score = positive_score
+        self.__negative_score = negative_score
 
     cpdef float getPositiveScore(self):
         """
@@ -29,7 +31,7 @@ cdef class SentiLiteral(object):
         float
             PositiveScore of the SentiSynSet.
         """
-        return self.__positiveScore
+        return self.__positive_score
 
     cpdef float getNegativeScore(self):
         """
@@ -40,7 +42,7 @@ cdef class SentiLiteral(object):
         float
             NegativeScore of the SentiSynSet.
         """
-        return self.__negativeScore
+        return self.__negative_score
 
     cpdef str getName(self):
         """
@@ -64,11 +66,13 @@ cdef class SentiLiteral(object):
         PolarityType.pxd
             PolarityType of the sentiLiteral.
         """
-        if self.__positiveScore > self.__negativeScore:
+        if self.__positive_score > self.__negative_score:
             return PolarityType.POSITIVE
         else:
-            if self.__positiveScore < self.__negativeScore:
+            if self.__positive_score < self.__negative_score:
                 return PolarityType.NEGATIVE
             else:
                 return PolarityType.NEUTRAL
 
+    def __repr__(self):
+        return f"{self.__name} {self.__positive_score} {self.__negative_score}"

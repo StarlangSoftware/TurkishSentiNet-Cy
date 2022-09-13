@@ -2,7 +2,7 @@ from SentiNet.SentiSynSet cimport SentiSynSet
 
 cdef class SentiNet(object):
 
-    cdef dict __sentiSynSetList
+    cdef dict __senti_synset_list
 
     cpdef SentiSynSet getSentiSynSet(self, str _id)
     cpdef addSentiSynSet(self, SentiSynSet sentiSynSet)

@@ -3,7 +3,9 @@ from SentiNet.PolarityType import PolarityType
 
 cdef class SentiSynSet(object):
 
-    def __init__(self, _id: str, positiveScore: float, negativeScore: float):
+    def __init__(self, _id: str,
+                 positive_score: float,
+                 negative_score: float):
         """
         Constructor of SentiSynSet. Gets input id, positiveScore, negativeScore and sets all corresponding attributes.
 
@@ -11,14 +13,14 @@ cdef class SentiSynSet(object):
         ----------
         _id : str
             Id of the SentiSynSet.
-        positiveScore : float
+        positive_score : float
             Positive score of the SentiSynSet.
-        negativeScore : float
+        negative_score : float
             Negative score of the SentiSynSet.
         """
         self.__id = _id
-        self.__positiveScore = positiveScore
-        self.__negativeScore = negativeScore
+        self.__positive_score = positive_score
+        self.__negative_score = negative_score
 
     cpdef float getPositiveScore(self):
         """
@@ -29,7 +31,7 @@ cdef class SentiSynSet(object):
         float
             PositiveScore of the SentiSynSet.
         """
-        return self.__positiveScore
+        return self.__positive_score
 
     cpdef float getNegativeScore(self):
         """
@@ -40,7 +42,7 @@ cdef class SentiSynSet(object):
         float
             NegativeScore of the SentiSynSet.
         """
-        return self.__negativeScore
+        return self.__negative_score
 
     cpdef str getId(self):
         """
@@ -64,10 +66,10 @@ cdef class SentiSynSet(object):
         PolarityType.pxd
             PolarityType of the sentiSynSet.
         """
-        if self.__positiveScore > self.__negativeScore:
+        if self.__positive_score > self.__negative_score:
             return PolarityType.POSITIVE
         else:
-            if self.__positiveScore < self.__negativeScore:
+            if self.__positive_score < self.__negative_score:
                 return PolarityType.NEGATIVE
             else:
                 return PolarityType.NEUTRAL
@@ -83,6 +85,9 @@ cdef class SentiSynSet(object):
         """
         outfile.write("<SYNSET>")
         outfile.write("<ID>" + self.__id + "</ID>")
-        outfile.write("<PSCORE>" + self.__positiveScore.__str__() + "</PSCORE>")
-        outfile.write("<NSCORE>" + self.__negativeScore.__str__() + "</NSCORE>")
+        outfile.write("<PSCORE>" + self.__positive_score.__str__() + "</PSCORE>")
+        outfile.write("<NSCORE>" + self.__negative_score.__str__() + "</NSCORE>")
         outfile.write("</SYNSET>\n")
+
+    def __repr__(self):
+        return f"{self.__id} {self.__positive_score} {self.__negative_score}"
