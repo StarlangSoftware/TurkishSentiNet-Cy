@@ -8,8 +8,8 @@ from Cython.Build import cythonize
 setup(
     ext_modules=cythonize(["SentiNet/*.pyx", "SentiNet/*.pxd"],
                           compiler_directives={'language_level': "3"}),
-    name='NlpToolkit-SentiNet-Cy',
-    version='1.0.8',
+    name='nlptoolkit-sentinet-cy',
+    version='1.0.9',
     packages=['SentiNet', 'SentiNet.data'],
     package_data={'SentiNet': ['*.pxd', '*.pyx', '*.c'],
                   'SentiNet.data': ['*.xml']},
